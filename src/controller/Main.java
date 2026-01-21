@@ -2,10 +2,7 @@ package controller;
 
 import entity.ElementFactory;
 import entity.PollutionMap;
-import se.mau.DA343A.VT26.assignment1.GeographicFeatureMapBuilder;
-import se.mau.DA343A.VT26.assignment1.IGeographicFeatureMap;
-import se.mau.DA343A.VT26.assignment1.IPollutionMap;
-import se.mau.DA343A.VT26.assignment1.ImageProvider;
+import se.mau.DA343A.VT26.assignment1.*;
 import view.*;
 
 /**
@@ -20,21 +17,18 @@ import view.*;
 public class Main {
 
     public static void main(String[] args) {
-
         ImageProvider imageProvider = new ImageProvider();
         IPollutionMap pollutionMap = new PollutionMap(imageProvider);
 
         GeographicFeatureMapBuilder builder = new GeographicFeatureMapBuilder();
+        builder.setHeight(AirQualityGUI.GRID_SIZE);
+        builder.setWidth(AirQualityGUI.GRID_SIZE);
         IGeographicFeatureMap geoMap = builder.build();
 
         ElementFactory factory = new ElementFactory(imageProvider, geoMap);
-
         Controller controller = new Controller(pollutionMap, factory, imageProvider);
-
         String[] elementSelectorTypeNames = {"Car", "Bus", "Airplane"};
-
         AirGui airgui = new AirGui(elementSelectorTypeNames, pollutionMap, controller);
-
         airgui.startGUIOnNewGUIThread();
     }
 }

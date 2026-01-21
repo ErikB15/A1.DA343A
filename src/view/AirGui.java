@@ -1,13 +1,10 @@
 package view;
 
-
 import controller.Controller;
-import entity.Element;
 import se.mau.DA343A.VT26.assignment1.AirQualityGUI;
 import se.mau.DA343A.VT26.assignment1.IElement;
 import se.mau.DA343A.VT26.assignment1.IPollutionMap;
 
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 

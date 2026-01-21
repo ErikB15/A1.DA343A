@@ -14,6 +14,9 @@ public abstract class Element implements IElement {
         this.icon = icon;
     }
 
+    public abstract void move();
+
+    public abstract void pollute();
     @Override
     public int getRow() {
         return row;

@@ -13,24 +13,24 @@ public class ElementFactory {
         this.geoMap = geoMap;
     }
 
-    public Element createElement(String type, int x, int y) {
+    public Element createElement(String typeOfElement, int x, int y) {
 
-        return switch (type) {
+        return switch (typeOfElement) {
             case "Car" -> {
-                if (!geoMap.isLand(y, x)) {
+                if (!geoMap.isLand(x, y)) {
+                    System.out.println("A car connot exist on water");
                     yield null;
                 }
                 yield new Car(x, y, imageProvider.getCarImage());
             }
             case "Bus" -> {
-                if (!geoMap.isLand(y, x)) {
+                if (!geoMap.isLand(x, y)) {
+                    System.out.println("A bus connot exist on water");
                     yield null;
                 }
                 yield new Bus(x, y, imageProvider.getBusImage());
             }
-            case "Airplane" -> {
-                yield new Airplane(x, y, imageProvider.getAirPlaneImage());
-            }
+            case "Airplane" -> new Airplane(x, y, imageProvider.getAirPlaneImage());
             default -> null;
         };
     }
