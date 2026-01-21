@@ -18,16 +18,17 @@ public class Main {
 
     public static void main(String[] args) {
         ImageProvider imageProvider = new ImageProvider();
-        IPollutionMap pollutionMap = new PollutionMap(imageProvider);
+        PollutionMap pollutionMap = new PollutionMap(imageProvider);
 
         GeographicFeatureMapBuilder builder = new GeographicFeatureMapBuilder();
         builder.setHeight(AirQualityGUI.GRID_SIZE);
         builder.setWidth(AirQualityGUI.GRID_SIZE);
         IGeographicFeatureMap geoMap = builder.build();
 
-        ElementFactory factory = new ElementFactory(imageProvider, geoMap);
+        ElementFactory factory = new ElementFactory(imageProvider, geoMap, pollutionMap);
         Controller controller = new Controller(pollutionMap, factory, imageProvider);
-        String[] elementSelectorTypeNames = {"Car", "Bus", "Airplane"};
+        String[] elementSelectorTypeNames = {"Car", "Bus", "Airplane", "Bike", "Woodland"};
+
         AirGui airgui = new AirGui(elementSelectorTypeNames, pollutionMap, controller);
         airgui.startGUIOnNewGUIThread();
     }

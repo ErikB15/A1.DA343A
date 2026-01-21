@@ -4,9 +4,9 @@ import se.mau.DA343A.VT26.assignment1.*;
 
 import java.awt.image.BufferedImage;
 
-public class Bus extends Element {
+public class Bike extends Element{
 
-    public Bus(int row, int column, BufferedImage icon, IGeographicFeatureMap geoMap, IPollutionMap pollutionMap) {
+    public Bike(int row, int column, BufferedImage icon, IGeographicFeatureMap geoMap, IPollutionMap pollutionMap) {
         super(row, column, icon, geoMap, pollutionMap);
     }
 
@@ -20,16 +20,16 @@ public class Bus extends Element {
 
         switch (dir) {
             case NORTH:
-                newRow = newRow - 2;
+                newRow = newRow - 1;
                 break;
             case SOUTH:
-                newRow = newRow + 2;
+                newRow = newRow + 1;
                 break;
             case WEST:
-                newColumn = newColumn - 2;
+                newColumn = newColumn - 1;
                 break;
             case EAST:
-                newColumn = newColumn + 2;
+                newColumn = newColumn + 1;
                 break;
         }
 
@@ -37,7 +37,7 @@ public class Bus extends Element {
             throw new MovedOutOfGridException();
         }
         if (!geoMap.isLand(newColumn, newRow)) {
-            System.out.println("Bus cannot drive on water");
+            System.out.println("Bike cannot ride on water");
             return;
         }
 
@@ -48,6 +48,6 @@ public class Bus extends Element {
     @Override
     public void pollute() {
         double current = pollutionMap.getPollution(row, column);
-        pollutionMap.setPollution(row, column, current + 6);
+        pollutionMap.setPollution(row, column, current + 0);
     }
 }

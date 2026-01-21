@@ -35,4 +35,7 @@ public class Controller {
     public List<Element> getElements() {
         return elements;
     }
+    public IPollutionMap getPollutionMap() { return pollutionMap; }
+
+
 }
